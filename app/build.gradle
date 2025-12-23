@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.jldevelopers.mediainfo'
-    compileSdk 36
+    compileSdk = 36
 
     defaultConfig {
         minSdk 24

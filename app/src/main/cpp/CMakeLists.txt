@@ -227,6 +227,15 @@ target_link_libraries(mediainfo thirdparty zen)
 # -----------------------------
 add_library(mediainfo-android SHARED mediainfo-jni.cpp)  # Changed to match your Java loadLibrary name
 
+# --------------------------------------------------
+# ✅ Force 16 KB ELF page alignment for MediaInfo JNI
+# --------------------------------------------------
+target_link_options(mediainfo-android PRIVATE
+        -Wl,-z,max-page-size=16384
+        -Wl,-z,common-page-size=16384
+)
+
+
 target_include_directories(mediainfo-android PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/ZenLib/Source
         ${CMAKE_CURRENT_SOURCE_DIR}/MediaInfoLib/Source
